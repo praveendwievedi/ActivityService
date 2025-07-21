@@ -1,9 +1,7 @@
 package com.fiitPeeps.activityService.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.aot.generate.Generated;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -28,9 +26,9 @@ public class Activity {
     private LocalDateTime startTime;
 
     @Field("metrics")
-    private Map<String,Object> addtional;
+    private Map<String,Object> additional;
 
-    @CreatedDate
+    @CreatedDate// we are using this because we are not using jpa this comes from spring framework
     private LocalDateTime createdAt;
     @LastModifiedDate
     private LocalDateTime updatedAt;

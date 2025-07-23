@@ -8,7 +8,7 @@ import java.util.Map;
 
 @Data
 public class ActivityResponse {
-    private String activityId;
+    private String id;
     private String userId;
     private Integer caloriesBurned;
     private Integer duration;

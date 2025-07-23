@@ -8,6 +8,9 @@ import com.fiitPeeps.activityService.models.Activity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class ActivityService {
@@ -37,5 +40,18 @@ public class ActivityService {
         activityResponse.setCreatedAt(savedActivity.getCreatedAt());
         activityResponse.setUpdatedAt(savedActivity.getUpdatedAt());
         return activityResponse;
+    }
+
+    public List<ActivityResponse> getActivities(String userId) {
+        List<Activity> activities=activityRespository.findByUserId(userId);
+        return activities.stream()
+                .map(this::mapToResponse)
+                .collect(Collectors.toList());
+    }
+
+    public ActivityResponse getActivityById(String id){
+        return activityRespository.findById(id)
+                .map(this::mapToResponse)
+                .orElseThrow(()-> new RuntimeException("No such activity found with id : " + id));
     }
 }

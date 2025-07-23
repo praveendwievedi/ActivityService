@@ -34,6 +34,8 @@ public class ActivityService {
         activityResponse.setCaloriesBurned(savedActivity.getCaloriesBurned());
         activityResponse.setStartTime(savedActivity.getStartTime());
         activityResponse.setDuration(savedActivity.getDuration());
+        activityResponse.setCreatedAt(savedActivity.getCreatedAt());
+        activityResponse.setUpdatedAt(savedActivity.getUpdatedAt());
         return activityResponse;
     }
 }

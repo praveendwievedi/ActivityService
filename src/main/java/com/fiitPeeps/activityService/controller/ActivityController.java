@@ -18,6 +18,7 @@ public class ActivityController {
 
     @PostMapping("/register")
     public ResponseEntity<ActivityResponse> registerActivity(@RequestBody ActivityRequest request){
+        System.out.println(request);
         return ResponseEntity.ok(activityService.registerActivity(request));
     }
 }

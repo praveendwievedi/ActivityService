@@ -1,5 +1,6 @@
 package com.fiitPeeps.activityService.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,6 +8,9 @@ import org.springframework.web.client.RestClient;
 
 @Configuration
 public class RestClientConfig {
+
+    @Value("${user.service.uri}")
+    private String uri;
     @Bean
     @LoadBalanced
     public RestClient.Builder restClientBuilder() {
@@ -17,7 +21,7 @@ public class RestClientConfig {
 //    @LoadBalanced
     public RestClient userServiceRestClient(RestClient.Builder restClientBuilder) {
         return restClientBuilder
-                .baseUrl("http://USER-SERVICE")
+                .baseUrl(uri)
                 .build();
     }
 }

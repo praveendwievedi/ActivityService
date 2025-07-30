@@ -28,4 +28,9 @@ public class ActivityController {
     public ResponseEntity<ActivityResponse> getActivityById(@PathVariable String activityId){
       return ResponseEntity.ok(activityService.getActivityById(activityId));
     }
+
+    @GetMapping("/test")
+    public String testConnection(){
+        return "we are live for activity service";
+    }
 }
